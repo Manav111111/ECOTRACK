@@ -11,13 +11,13 @@ const CarbonChart = ({ data }) => {
       {
         data: Object.values(data),
         backgroundColor: [
-          '#00B894', // emerald
-          '#0984E3', // soft-blue
-          '#A3E635', // light-green
-          '#6366F1', // indigo
+          '#059669', // emerald-600
+          '#3B82F6', // blue-500
+          '#84CC16', // green-500
+          '#6366F1', // indigo-500
         ],
         borderWidth: 2,
-        borderColor: '#ffffff',
+        borderColor: '#fff',
       },
     ],
   }
@@ -28,13 +28,13 @@ const CarbonChart = ({ data }) => {
       legend: {
         position: 'bottom',
         labels: {
-          usePointStyle: true,
-          padding: 20,
-          color: '#2D3436',
-        },
-      },
+          color: '#374151',
+          padding: 16,
+          usePointStyle: true
+        }
+      }
     },
-    cutout: '60%',
+    cutout: '60%'
   }
 
   return (

@@ -9,24 +9,23 @@ const ActivityInput = ({ onDataUpdate }) => {
   })
 
   const handleInputChange = (category, value) => {
-    const newActivities = {
-      ...activities,
-      [category]: value
-    }
+    const newActivities = { ...activities, [category]: value }
     setActivities(newActivities)
-    
-    // Simulate carbon calculation
+
     const calculatedData = {
-      transportation: value ? 2.4 : 0,
-      electricity: value ? 1.8 : 0,
-      diet: value ? 2.1 : 0,
-      waste: value ? 0.7 : 0
+      transportation: activities.transportation ? 2.4 : 0,
+      electricity: activities.electricity ? 1.8 : 0,
+      diet: activities.diet ? 2.1 : 0,
+      waste: activities.waste ? 0.7 : 0
     }
+
     onDataUpdate(calculatedData)
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
+
+      {/* Transportation */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           🚗 Transportation (km driven)
@@ -34,11 +33,14 @@ const ActivityInput = ({ onDataUpdate }) => {
         <input
           type="number"
           placeholder="e.g., 15 km"
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald focus:border-emerald dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+          bg-gray-50 dark:bg-gray-700 dark:text-white 
+          focus:ring-2 focus:ring-emerald-500"
           onChange={(e) => handleInputChange('transportation', e.target.value)}
         />
       </div>
 
+      {/* Electricity */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           💡 Electricity Usage (kWh)
@@ -46,27 +48,33 @@ const ActivityInput = ({ onDataUpdate }) => {
         <input
           type="number"
           placeholder="e.g., 8.5 kWh"
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald focus:border-emerald dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+          bg-gray-50 dark:bg-gray-700 dark:text-white 
+          focus:ring-2 focus:ring-emerald-500"
           onChange={(e) => handleInputChange('electricity', e.target.value)}
         />
       </div>
 
+      {/* Diet */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           🍽️ Diet Choices
         </label>
         <select
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald focus:border-emerald dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+          bg-gray-50 dark:bg-gray-700 dark:text-white 
+          focus:ring-2 focus:ring-emerald-500"
           onChange={(e) => handleInputChange('diet', e.target.value)}
         >
-          <option value="">Select your diet type</option>
+          <option value="">Select your diet</option>
           <option value="vegan">Vegan</option>
           <option value="vegetarian">Vegetarian</option>
-          <option value="meat-occasional">Meat - Occasional</option>
-          <option value="meat-regular">Meat - Regular</option>
+          <option value="meat-occasional">Meat – Occasional</option>
+          <option value="meat-regular">Meat – Regular</option>
         </select>
       </div>
 
+      {/* Waste */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           🗑️ Waste Production (kg)
@@ -74,14 +82,18 @@ const ActivityInput = ({ onDataUpdate }) => {
         <input
           type="number"
           placeholder="e.g., 1.2 kg"
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald focus:border-emerald dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+          bg-gray-50 dark:bg-gray-700 dark:text-white 
+          focus:ring-2 focus:ring-emerald-500"
           onChange={(e) => handleInputChange('waste', e.target.value)}
         />
       </div>
 
-      <button className="w-full bg-emerald text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+      {/* Button */}
+      <button className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
         Calculate Carbon Footprint
       </button>
+
     </div>
   )
 }
